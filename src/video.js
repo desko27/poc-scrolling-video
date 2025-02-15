@@ -10,24 +10,22 @@ function once(element, event, fn, options) {
   element.addEventListener(event, onceFn, options)
 }
 
-export function setupVideoAnimation() {
-  const video = document.querySelector('.video')
-
+export function setupScrollDrivenVideo(containerId, $video) {
   const timeline = gsap.timeline({
     defaults: { duration: 1 },
     scrollTrigger: {
-      trigger: '#container',
+      trigger: containerId,
       start: 'top top',
       end: 'bottom bottom',
       scrub: true,
     },
   })
 
-  once(video, 'loadedmetadata', () => {
+  once($video, 'loadedmetadata', () => {
     timeline.fromTo(
-      video,
+      $video,
       { currentTime: 0 },
-      { currentTime: video.duration || 1 },
+      { currentTime: $video.duration || 1 },
     )
   })
 }

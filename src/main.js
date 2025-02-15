@@ -1,6 +1,6 @@
 import './style.css'
 import './video.css'
-import { setupVideoAnimation } from './video.js'
+import { setupScrollDrivenVideo } from './video.js'
 
 document.querySelector('#app').innerHTML = `
   <video class="video" preload="auto" muted playsinline autoplay onloadedmetadata="this.pause()">
@@ -9,4 +9,7 @@ document.querySelector('#app').innerHTML = `
   <div id="container"></div>
 `
 
-setupVideoAnimation()
+setupScrollDrivenVideo(
+  '#container',
+  document.querySelector('.video')
+)
